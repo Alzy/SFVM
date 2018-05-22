@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{heading}}</title>
+    
+    {% load staticfiles %}
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- cdn scripts -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <h1>Submit your event</h1>
+                <form id="event_form" method="post" action="/add-event/">
+                    {% csrf_token %}
+                    {% for hidden in form.hidden_fields %}
+                        {{hidden}}
+                    {% endfor %}
+                    {% for field in form.visible_fields %}
+                        {{field.errors}}
+                        {{field.help_text}}
+                        {{field}}
+                    {% endfor %}
+                    <input type="Submit" name="Submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

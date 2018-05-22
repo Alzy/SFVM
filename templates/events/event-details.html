@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{heading}}</title>
+    
+    {% load staticfiles %}
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- cdn scripts -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <article>
+                    {% if event %}
+                        <h1>{{event.name}}</h1>
+                        {{event.price}}
+                        {{event.description}}
+                    {% else %}
+                        <h1>NO MATCHING EVENT</h1>
+                    {% endif %}
+                </article>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -23,5 +23,6 @@ from events import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^events/', include('events.urls')),
+    url(r'^add-event/', views.add_event, name='add_event'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
