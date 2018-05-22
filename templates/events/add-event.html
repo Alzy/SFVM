@@ -10,27 +10,48 @@
     <!-- cdn scripts -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/places.js@1.7.2"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="[ col-xs-12 col-sm-offset-2 col-sm-8 ]">
-                <h1>Submit your event</h1>
-                <form id="event_form" method="post" action="/add-event/">
-                    {% csrf_token %}
-                    {% for hidden in form.hidden_fields %}
-                        {{hidden}}
-                    {% endfor %}
-                    {% for field in form.visible_fields %}
-                        {{field.errors}}
-                        {{field.help_text}}
-                        {{field}}
-                    {% endfor %}
-                    <input type="Submit" name="Submit" value="Submit">
-                </form>
+            <div class="article submit-your-event [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <article>
+                    <h1>Submit your event</h1>
+                    <form id="event_form" method="post" action="/add-event/">
+                        {% csrf_token %}
+                        {% for hidden in form.hidden_fields %}
+                            {{hidden}}
+                        {% endfor %}
+                        {% for field in form.visible_fields %}
+                            {%if field.errors%}
+                                <section class="alert alert-danger">
+                                    {{field.errors}}
+                                </section>
+                            {%endif%}
+                            <section>
+                                {%if field.help_text%}
+                                    <label for="{{field.name}}">
+                                        {{field.help_text}}
+                                    </label>
+                                {%endif%}
+                                {{field}}             
+                            </section>
+                        {% endfor %}
+                        <input type="Submit" name="Submit" value="Submit" class="btn btn-default">
+                    </form>                    
+                </article>
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        var placesAutocomplete = places({
+            container: document.querySelector("input[name*=location]"),
+            type: 'address',
+            countries: ['us'],
+            useDeviceLocation: true,
+            aroundRadius: 33000
+        });
+    </script>
 </body>
 </html>

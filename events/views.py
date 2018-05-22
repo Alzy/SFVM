@@ -7,7 +7,9 @@ from events.forms import EventForm
 # Create your views here.
 def index(request):
     # dictionary containing dynamic page content
-    event_list = Event.objects.order_by('created_at')[:10]
+    event_list = Event.objects.filter(approved=True)
+    event_list.order_by('created_at')[:10]
+
     context_dict = {
         'heading': 'Upcoming Events',
         'events': event_list

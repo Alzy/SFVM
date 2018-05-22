@@ -13,6 +13,7 @@ class Event(models.Model):
 
     image = models.ImageField(width_field=500, height_field=500, blank=True)
     description = models.TextField()
+    location = models.CharField(max_length=256, blank=True)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
