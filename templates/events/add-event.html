@@ -6,19 +6,19 @@
     {% load staticfiles %}
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/add-event.css' %}">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <!-- cdn scripts -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/places.js@1.7.2"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="article submit-your-event [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+            <div class="article add-event [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                 <article>
-                    <h1>Submit your event</h1>
-                    <form id="event_form" method="post" action="/add-event/">
+                    <h1>Submit Your Event</h1>
+                    <form id="event_form" method="post" enctype="multipart/form-data" action="/add-event/">
                         {% csrf_token %}
                         {% for hidden in form.hidden_fields %}
                             {{hidden}}
@@ -29,7 +29,7 @@
                                     {{field.errors}}
                                 </section>
                             {%endif%}
-                            <section>
+                            <section class="form-field">
                                 {%if field.help_text%}
                                     <label for="{{field.name}}">
                                         {{field.help_text}}
@@ -44,13 +44,55 @@
             </div>
         </div>
     </div>
+    <!-- DATE TIME PICKER -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <script type="text/javascript">
-        var placesAutocomplete = places({
-            container: document.querySelector("input[name*=location]"),
-            type: 'address',
-            countries: ['us'],
-            useDeviceLocation: true,
-            aroundRadius: 33000
+        $('input[name*=start_date]').datetimepicker({
+            inline: true,
+            minDate: 0,
+            defaultDate: 0,
+            defaultTime: 0,
+            defaultSelect: false,
+            format: 'Y-m-d H:i'
+        });
+        $('input[name*=end_date]').datetimepicker({
+            inline: true,
+            minDate: 0,
+            defaultDate: 0,
+            defaultTime: 0,
+            defaultSelect: false,
+            format: 'Y-m-d H:i'
+        });
+    </script>
+    <!-- WYSIWYG -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script type="text/javascript">
+        var descriptionField = $('textarea[name=description]');
+        descriptionField.hide();
+        var descDiv = document.createElement('div');
+        descDiv.className = 'event-description';
+        $(descDiv).insertAfter(descriptionField);
+        $(descDiv).html(descriptionField.html());
+        var descQuill = new Quill(
+            '.event-description',
+            {
+                modules:{
+                    toolbar: [
+                        ['bold', 'italic', 'underline', 'strike', 'link'],
+                        [{ 'list': 'bullet' }],
+                        [{ 'color': [] }, { 'background': [] }],
+                        ['clean'] 
+                    ]                
+                },
+                theme: 'snow',
+                placeholder: 'Event details...'
+            },
+        );
+
+        descQuill.on('text-change', function(delta, oldDelta, source){
+            descriptionField.html(descQuill.root.innerHTML);
         });
     </script>
 </body>

@@ -1,5 +1,7 @@
 from django import forms
+from django.core.files.images import get_image_dimensions
 from events.models import Event
+
 
 class EventForm(forms.ModelForm):
     name = forms.CharField(
@@ -9,16 +11,33 @@ class EventForm(forms.ModelForm):
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     approved = forms.CharField(widget=forms.HiddenInput(), required=False)
 
-    location = forms.CharField(
+    address = forms.CharField(
         max_length=128,
         help_text="Address"
     )
-    image = forms.ImageField(help_text="Event image", required=False)
-    description = forms.Textarea()
-    start_date = forms.DateTimeField(help_text="Start date & time")
-    end_date = forms.DateTimeField(help_text="End date & time")
+    city = forms.CharField(
+        max_length=64,
+        help_text="City"
+    )
+    image = forms.ImageField(
+        help_text="Event Flyer",
+        required=False
+    )
+    short_description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            "placeholder": "This will show up in the events list..."
+        }),
+        help_text="Short Description",
+        max_length=256
+    )
+    description = forms.CharField(
+        widget=forms.Textarea,
+        help_text="Long Description"
+    )
+    start_date = forms.DateTimeField(help_text="Start Date/Time")
+    end_date = forms.DateTimeField(help_text="End Date/Time")
     price = forms.DecimalField(help_text="Price", decimal_places=2, initial=0)
-    more_details_link = forms.URLField(help_text="Event Link")
+    more_details_link = forms.URLField(help_text="Event Link", required=False)
 
     class Meta:
         model = Event
@@ -27,3 +46,15 @@ class EventForm(forms.ModelForm):
             'approved',
             'approved_at',
         )
+
+    def clean_image(self):
+        img = self.cleaned_data.get("image")
+        if not img:
+            pass
+        else:
+            w, h = get_image_dimensions(img)
+            if w != h:
+                raise forms.ValidationError("The image must be a square.")
+            if w > 800 or h > 800:
+                raise forms.ValidationError("The image must be < than 800x800px")
+        return img

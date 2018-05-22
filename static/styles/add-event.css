@@ -1,0 +1,26 @@
+.article.add-event {
+  padding-bottom: 3em; }
+  .article.add-event section {
+    margin: 3em 0; }
+  .article.add-event input, .article.add-event textarea {
+    display: block; }
+  .article.add-event input[name=name] {
+    width: 50%; }
+  .article.add-event textarea[name=short_description] {
+    width: 100%;
+    height: 5em; }
+  .article.add-event div.event-description .ql-editor {
+    background-color: white;
+    min-height: 10em; }
+  .article.add-event input[name=address] {
+    width: 50%; }
+  .article.add-event input[name=start_date],
+  .article.add-event input[name=end_date] {
+    display: block !important;
+    width: 0px;
+    height: 0px;
+    opacity: 0; }
+  .article.add-event input[name=more_details_link] {
+    width: 75%; }
+
+/*# sourceMappingURL=add-event.css.map */

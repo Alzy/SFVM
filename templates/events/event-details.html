@@ -6,6 +6,7 @@
     {% load staticfiles %}
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/event-details.css' %}">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <!-- cdn scripts -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -17,12 +18,15 @@
             <div class="article event-details [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                 <article>
                     {% if event %}
+                        {% if event.image %}
+                            <img src="{{event.image.url}}" class="flyer">
+                        {% endif %}
                         <h1>{{event.name}}</h1>
                         <section class="price">
                             $ {{event.price}}
                         </section>
                         <section class="description">
-                            {{event.description}}
+                            {{event.description|safe}}
                         </section>
                     {% else %}
                         <h1>NO MATCHING EVENT</h1>

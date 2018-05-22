@@ -7,8 +7,9 @@ from events.forms import EventForm
 # Create your views here.
 def index(request):
     # dictionary containing dynamic page content
-    event_list = Event.objects.filter(approved=True)
-    event_list.order_by('created_at')[:10]
+    event_list = Event.objects.filter(
+        approved=True
+    ).order_by('start_date')[:10]
 
     context_dict = {
         'heading': 'Upcoming Events',
@@ -31,7 +32,7 @@ def event_details(request, event_slug):
 def add_event(request):
     form = EventForm()
     if request.method == 'POST':
-        form = EventForm(request.POST)
+        form = EventForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save(commit=True)

@@ -11,13 +11,15 @@ class Event(models.Model):
     approved = models.BooleanField(blank=True, default=False)
     approved_at = models.DateTimeField(blank=True, null=True, editable=False)
 
-    image = models.ImageField(width_field=500, height_field=500, blank=True)
+    image = models.ImageField(upload_to="flyers", blank=True)
+    short_description = models.TextField(max_length=256, blank=True)
     description = models.TextField()
-    location = models.CharField(max_length=256, blank=True)
+    address = models.CharField(max_length=64, blank=True)
+    city = models.CharField(max_length=64, blank=True)
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     price = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
-    more_details_link = models.URLField(blank=True)
+    more_details_link = models.URLField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)

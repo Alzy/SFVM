@@ -1,0 +1,37 @@
+.article.add-event {
+    padding-bottom: 3em;
+
+    section {
+        margin: 3em 0;
+    }
+
+    input, textarea {
+        display: block;
+    }
+    input[name=name] {
+        width: 50%;
+    }
+    textarea[name=short_description] {
+        width: 100%;
+        height: 5em;
+    }
+    div.event-description {
+        .ql-editor {
+            background-color: white;
+            min-height: 10em;
+        }
+    }
+    input[name=address] {
+        width: 50%;
+    }
+    input[name=start_date],
+    input[name=end_date] {
+        display: block !important;
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+    input[name=more_details_link] {
+        width: 75%;
+    }
+}
