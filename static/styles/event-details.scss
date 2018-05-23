@@ -1,10 +1,26 @@
 .article.event-details {
     img.flyer {
-        width: 100%;
+        width: -webkit-calc(100% + 30px);
+        width: -moz-calc(100% + 30px);
+        width: calc(100% + 30px);
         height: auto;
+        margin: 0px -15px;
     }
+    section.details{
+    	table {
+    		width: 100%;
 
+    		td{
+	    		padding-right: 5em;
+    			strong, h4 {
+    				display: inline-block;
+    			}
+    			strong {margin-right: 0.333em;}
+    		}
+    	}
+    }
     section.description {
         min-height: 25vh;
+        margin-top: 1em;
     }
 }

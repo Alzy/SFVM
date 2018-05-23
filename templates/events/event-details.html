@@ -22,8 +22,22 @@
                             <img src="{{event.image.url}}" class="flyer">
                         {% endif %}
                         <h1>{{event.name}}</h1>
-                        <section class="price">
-                            $ {{event.price}}
+                        <section class="details">
+                            <table>
+                                <tr>
+                                    <td class="price">
+                                        <strong>$</strong><h4>{{event.price}}</h4>
+                                    </td>
+                                    <td class="date">
+                                        <strong>When: </strong><h4>
+                                            {{event.start_date}}
+                                        </h4>
+                                    </td>
+                                    <td class="address">
+                                        <strong>Where: </strong><h4>{{event.address}}, {{event.city}}</h4>
+                                    </td>
+                                </tr>
+                            </table>
                         </section>
                         <section class="description">
                             {{event.description|safe}}

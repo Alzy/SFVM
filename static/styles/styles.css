@@ -88,6 +88,15 @@ body {
     text-decoration: none;
 } 
 
+.submit-an-event {
+    width: 100%;
+}
+.submit-an-event a {
+    display: table;
+    margin: 0 auto;
+    font-size: 3em;
+    padding: 3em 0 1em 0;
+}
 .article {
     background-color: rgba(255, 255, 255, 0.95);
     min-height: 100vh;
