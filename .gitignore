@@ -1,2 +1,5 @@
 db.sqlite3
+events/__pycache__
+events/migrations/__pycache__
 media/flyers/*
+sfvm/__pycache__
