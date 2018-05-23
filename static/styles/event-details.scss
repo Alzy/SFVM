@@ -22,5 +22,8 @@
     section.description {
         min-height: 25vh;
         margin-top: 1em;
+        p, span, a {
+            font-size: 16px;
+        }
     }
 }
