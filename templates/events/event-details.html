@@ -26,7 +26,14 @@
                             <table>
                                 <tr>
                                     <td class="price">
-                                        <strong>$</strong><h4>{{event.price}}</h4>
+                                        <strong>$</strong>
+                                        <h4>
+                                            {% if event.price == 0.00 %}
+                                                FREE
+                                            {% else %}
+                                                {{event.price}}
+                                            {% endif %}
+                                        </h4>
                                     </td>
                                     <td class="date">
                                         <strong>When: </strong><h4>
@@ -41,11 +48,15 @@
                         </section>
                         <section class="description">
                             {{event.description|safe}}
+                            {% if event.end_date %}
+                                <p>Event ends {{event.end_date}}</p>
+                            {% endif %}
                         </section>
                     {% else %}
                         <h1>NO MATCHING EVENT</h1>
                     {% endif %}
                 </article>
+                {% include "modules/footer.html" %}
             </div>
         </div>
     </div>

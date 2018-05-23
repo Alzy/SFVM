@@ -6,37 +6,37 @@ from events.models import Event
 class EventForm(forms.ModelForm):
     name = forms.CharField(
         max_length=128,
-        help_text="Event Name"
+        help_text="* Event Name"
     )
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     approved = forms.CharField(widget=forms.HiddenInput(), required=False)
 
     address = forms.CharField(
         max_length=128,
-        help_text="Address"
+        help_text="* Address"
     )
     city = forms.CharField(
         max_length=64,
-        help_text="City"
+        help_text="* City"
     )
     image = forms.ImageField(
-        help_text="Event Flyer (must be square ie: 800x800px)",
+        help_text="Event Flyer (must be square <= 800x800px)",
         required=False
     )
     short_description = forms.CharField(
         widget=forms.Textarea(attrs={
-            "placeholder": "This will show up in the events list..."
+            "placeholder": "This is what will show up in the events list..."
         }),
-        help_text="Short Description",
+        help_text="* Short Description",
         max_length=256
     )
     description = forms.CharField(
         widget=forms.Textarea,
-        help_text="Long Description"
+        help_text="* Long Description"
     )
-    start_date = forms.DateTimeField(help_text="Start Date/Time")
+    start_date = forms.DateTimeField(help_text="* Start Date/Time")
     end_date = forms.DateTimeField(help_text="End Date/Time")
-    price = forms.DecimalField(help_text="Price", decimal_places=2, initial=0)
+    price = forms.DecimalField(help_text="* Price ($0.00 if free)", decimal_places=2, initial="0.00")
     more_details_link = forms.URLField(help_text="Event Link", required=False)
 
     class Meta:

@@ -30,18 +30,23 @@
                                     <a href="/events/{{event.slug}}">
                                         <h2 class="title">{{event.name}}</h2>
                                     </a>
+                                    <div class="details">
+                                        <span class="price">
+                                            {% if event.price == 0.00 %}
+                                                <span class="free">$ FREE</span>
+                                            {% else %}
+                                                $ {{event.price}}
+                                            {% endif %}                                            
+                                        </span>
+                                        <strong>{{event.city}}</strong>
+                                    </div>
                                     <p class="desc">{{event.short_description}}</p>
-                                    <ul>
-                                        <li>$ {{event.price}}</li>
-                                    </ul>
                                 </div>
                             </li>
                         {% endfor %}
                     {% endif%}
                 </ul>
-                <div class="submit-an-event">
-                    <a href="/add-event/">Submit an Event</a>
-                </div>
+                {% include "modules/footer.html" %}
             </div>
         </div>
     </div>

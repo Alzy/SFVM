@@ -63,38 +63,38 @@ body {
 .event-list > li > .info > a {
     color: black;
 }
+.event-list > li > .info > .details {
+    margin-bottom: 0.666em;
+}
+.event-list > li > .info > .details > .price {
+    margin-right: 0.666em;
+}
+.event-list > li > .info > .details > .price .free{
+    color: green;
+    font-weight: 700;
+}
 .event-list > li > .info > .desc {
     margin: 0px;
 }
-.event-list > li > .info > ul {
-    display: table;
-    list-style: none;
-    margin: 10px 0px 0px;
-    padding: 0px;
-    width: 100%;
-    text-align: center;
-}
 
-.event-list > li > .info > ul > li {
-    display: table-cell;
-    font-size: 1em;
-    text-align: right;
-    padding: 0em 1em;
+/* FOOTER */
+footer {
+    padding: 8em 0 1em 0;    
 }
-.event-list > li > .info > ul > li > a {
+footer .logo img {
     display: block;
-    width: 100%;
-    text-decoration: none;
-} 
-
+    max-height: 8em;
+    margin: 0 auto;
+}
 .submit-an-event {
     width: 100%;
 }
 .submit-an-event a {
+    color: black;
     display: table;
     margin: 0 auto;
-    font-size: 3em;
-    padding: 3em 0 1em 0;
+    font-size: 1em;
+    padding: 1em 0;
 }
 .article {
     background-color: rgba(255, 255, 255, 0.95);

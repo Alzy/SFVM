@@ -18,6 +18,9 @@
             <div class="article add-event [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                 <article>
                     <h1>Submit Your Event</h1>
+                    <p>Fill out this form to submit an event. All fields with an * asterisk are required.</p>
+                    <p></p>
+                    <p><strong>NOTE:</strong> All submissions must be approved before they become live on the site. Make sure everything is correct before hitting submit as there is no way to edit your submission after it has been submitted. NO SPAMMERS.</p>
                     <form id="event_form" method="post" enctype="multipart/form-data" action="/add-event/">
                         {% csrf_token %}
                         {% for hidden in form.hidden_fields %}
@@ -95,5 +98,6 @@
             descriptionField.html(descQuill.root.innerHTML);
         });
     </script>
+    {% include "modules/footer.html" %}
 </body>
 </html>
