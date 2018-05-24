@@ -8,6 +8,12 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 dotenv_path = os.path.join(project_dir, '.env')
 load_dotenv(dotenv_path)
 
+# update DATABASE_NAME to use \$ instead of $ else commands wont work
+os.putenv(
+    "DATABASE_NAME",
+    str(os.getenv("DATABASE_NAME")).replace('$', '\\$')
+)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sfvm.settings")
     try:
