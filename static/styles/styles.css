@@ -2,7 +2,7 @@
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 
 body {
-    background-image: url('/static/images/bg1.jpg');
+    background-size: contain;
 }
 
 .top-banner {
@@ -132,7 +132,7 @@ footer .logo img {
     }
     .event-list > li > .info {
         position: relative;
-        height: 120px;
+        min-height: 120px;
         text-align: left;
         padding-right: 40px;
     }   
