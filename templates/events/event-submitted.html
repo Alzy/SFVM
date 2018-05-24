@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{heading}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    {% load staticfiles %}
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/event-details.css' %}">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <!-- cdn scripts -->
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="article event-details [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
+                <article>
+                    <h1>Thank You</h1>
+                    <p>Your event has been submitted</p>
+                    <p>Once your event has been appproved, it will be available for all to see.</p>
+                </article>
+                {% include "modules/footer.html" %}
+            </div>
+        </div>
+        <script type="text/javascript">
+            setTimeout(function () {
+                document.location.href="/";
+            }, 1300);
+        </script>
+    </div>
+    <footer>
+        <div class="logo">
+            <a href="/">
+                <img src="{% static 'images/818.svg' %}">
+            </a>
+        </div>
+        <div class="submit-an-event">
+            <a href="/add-event/">Submit an event</a>
+        </div>                    
+    </footer>
+</body>
+</html>

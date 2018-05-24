@@ -36,7 +36,7 @@ def add_event(request):
 
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return render(request, 'events/event-submitted.html')
         else:
             print(form.errors)
 
