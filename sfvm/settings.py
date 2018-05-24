@@ -26,6 +26,7 @@ PUBLIC_DIR = os.path.join(BASE_DIR, 'public')
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
+print(str(os.getenv("DEBUG")))
 if str(os.getenv("DEBUG")) == "False":
     DEBUG = False
 else:
