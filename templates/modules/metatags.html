@@ -1,4 +1,6 @@
 {% load staticfiles %}
 <meta property="og:title" content="SFVM.LA - Local shows in the 818" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}" />
 <meta property="og:description" content="A community based events listing page where you can check out or post upcoming music, art, popup events going down in the 818" />
 <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/818.jpg' %}{% endblock %}" />
