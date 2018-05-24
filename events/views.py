@@ -1,14 +1,15 @@
 from django.shortcuts import render
 from events.models import Event
 from events.forms import EventForm
-# from django.http import HttpResponse
+from datetime import date
 
 
 # Create your views here.
 def index(request):
     # dictionary containing dynamic page content
     event_list = Event.objects.filter(
-        approved=True
+        approved=True,
+        start_date__gte=date.today()
     ).order_by('start_date')[:10]
 
     context_dict = {
