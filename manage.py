@@ -2,6 +2,12 @@
 import os
 import sys
 
+from dotenv import load_dotenv
+# LOAD ENVIRONMENT VARIABLES FROM .ENV IN THE PROJECTS ROOT FOLDER
+project_dir = os.path.dirname(os.path.abspath(__file__))
+dotenv_path = os.path.join(project_dir, '.env')
+load_dotenv(dotenv_path)
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sfvm.settings")
     try:

@@ -22,10 +22,10 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'btig564w1zw#3*j*#5v3w88t&$*pd_)vz*c6sd)1tn3-adk&(z'
+SECRET_KEY = str(os.getenv("SECRET_KEY"))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = ['localhost', 'sfvm.la', 'webapp-433772.pythonanywhere.com']
 
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'sfvm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': str(os.getenv("DATABASE_ENGINE")),
+        'NAME': str(os.getenv("DATABASE_NAME")),
+        'USER': str(os.getenv("DATABASE_USER")),
+        'PASSWORD': str(os.getenv("DATABASE_PASSWORD")),
+        'HOST': str(os.getenv("DATABASE_HOST")),
+        'PORT': str(os.getenv("DATABASE_PORT")),
     }
 }
 
@@ -123,7 +127,7 @@ USE_TZ = True
 
 STATICFILES_DIRS = [STATIC_DIR]
 STATIC_URL = '/static/'
-STATIC_ROOT = STATIC_DIR
+STATIC_ROOT = '/public/'
 
 # Media files
 
