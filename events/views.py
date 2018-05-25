@@ -9,8 +9,8 @@ def index(request):
     # dictionary containing dynamic page content
     event_list = Event.objects.filter(
         approved=True,
-        start_date__gte=date.today()
-    ).order_by('start_date')[:10]
+        end_date__gte=date.today()
+    ).order_by('start_date')[:14]
 
     context_dict = {
         'heading': 'Upcoming Events',
