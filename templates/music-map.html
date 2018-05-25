@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SFVM - A History</title>
+	<link rel="shortcut icon" type="image/png" href="/media/music-map/images/favicon.ico"/>
+	<link rel="stylesheet" href="/static/styles/music-map.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
+	<script src="/static/scripts/music-map/tracks.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+</head>
+<body>
+	<div id="sfvm-history-map"></div>
+	<audio id="audio" style="display: none;">
+		<source src="" type="audio/mpeg" id="audio-source">
+	</audio>
+</body>
+<script type="text/javascript">
+	var sfvmMap = L.map('sfvm-history-map',{ zoom: 12, minZoom: 12, maxZoom: 16}).setView([34.203509,-118.538941],12);
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		id: 'mapbox.streets'
+	}).addTo(sfvmMap);
+
+
+	var eightBallIcon = L.icon({
+		iconUrl: '/media/music-map/images/marker-icon.png',
+		shadowUrl: '/media/music-map/images/marker-shadow.png',
+		popupAnchor:  [11, -2] // point from which the popup should open relative to the iconAnchor
+	});
+
+	var markers = [];
+	for (var i = tracks.length - 1; i >= 0; i--) {
+		var marker = L.marker(
+			[tracks[i].latitude, tracks[i].longitude],
+			{
+				icon: eightBallIcon
+			}
+		).addTo(sfvmMap);
+		var markerPopUpString = "<div class='track-popup-wrapper'> <img src='/media/music-map/pictures/" + tracks[i].picture + "'/><div class='track-info'><h1>" + tracks[i].title + "</h1> <h2>" + tracks[i].artist + "</h2> <h3>" + tracks[i].album + " - " + tracks[i].year + "</h3></div> <p>" + tracks[i].blurb + "</p> </div>";
+		marker.bindPopup(markerPopUpString);
+		marker.audio = tracks[i].audio;
+		marker.on('click',function (ev) {
+			var audioPlayer = document.getElementById('audio');
+			var audioPlayerSource = document.getElementById('audio-source');
+			audioPlayerSource.src = "/media/music-map/music/" + ev.target.audio;
+			audioPlayer.load();
+			audioPlayer.play();
+		})
+	}
+</script>
+</html>
