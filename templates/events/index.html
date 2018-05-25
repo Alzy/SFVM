@@ -24,8 +24,15 @@
             </div>
             <div class="upcoming-events [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
                 <h1 class="upcoming-events-heading">Upcoming Events</h1>
-                <a href="/music-map">
+                <a href="/music-map" class="hidden" id="music-map-icon">
                     <img src="/media/music-map/images/marker-icon.png" style="position: absolute; right: 20px; top: -20px;">
+                    <script type="text/javascript">
+                        let mapbool = Math.round(Math.random() * 3);
+                        console.log(mapbool);
+                        if (mapbool == 2) {
+                            document.getElementById("music-map-icon").className = "";
+                        }
+                    </script>
                 </a>
                 <ul class="event-list">
                     {% if events %}
