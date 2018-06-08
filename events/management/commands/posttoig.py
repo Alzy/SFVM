@@ -13,7 +13,7 @@ class Command(BaseCommand):
         # update DATABASE_NAME to use \$ instead of $ else commands wont work
         os.putenv(
             "DATABASE_NAME",
-            str(os.getenv("DATABASE_NAME")).replace('$', '\\$')
+            "alzy$sfvm"
         )
 
         try:
