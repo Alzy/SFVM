@@ -13,7 +13,7 @@ class Command(BaseCommand):
         # update DATABASE_NAME to use \$ instead of $ else commands wont work
         os.putenv(
             "DATABASE_NAME",
-            "alzy$sfvm"
+            "alzy\\$sfvm"
         )
 
         try:
