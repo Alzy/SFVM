@@ -1,6 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from events.models import Event
 import datetime
+import os
 from InstagramAPI import InstagramAPI
 
 
@@ -9,6 +10,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         tomorrow = datetime.date.today() + datetime.timedelta(days=1)
+        # update DATABASE_NAME to use \$ instead of $ else commands wont work
+        os.putenv(
+            "DATABASE_NAME",
+            str(os.getenv("DATABASE_NAME")).replace('$', '\\$')
+        )
 
         try:
             event_list = Event.objects.filter(
