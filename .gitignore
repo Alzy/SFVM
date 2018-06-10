@@ -6,3 +6,7 @@ media/flyers/*
 public/*
 sfvm/__pycache__
 .env
+"production-settings.py" 
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]

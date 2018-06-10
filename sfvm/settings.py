@@ -93,6 +93,10 @@ DATABASES = {
     }
 }
 
+try:
+    from production_settings import DATABASES
+except ImportError:
+    pass
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
