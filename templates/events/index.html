@@ -35,6 +35,8 @@
                     </script>
                 </a>
                 <ul class="event-list">
+                    {% load tz %}
+                    {% localtime off %}
                     {% if events %}
                         {% for event in events %}
                             <li>
@@ -61,6 +63,7 @@
                             </li>
                         {% endfor %}
                     {% endif%}
+                    {% endlocaltime %}
                 </ul>
                 <footer>
                     <div class="logo">
