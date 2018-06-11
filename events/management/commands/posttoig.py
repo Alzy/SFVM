@@ -42,7 +42,8 @@ class Command(BaseCommand):
                         pass
 
         except Exception as e:
-            raise CommandError('Something went wrong')
+            print('\n\nSomething went wrong. Image might be too big?\n\n')
+            pass
 
         self.stdout.write(
             self.style.SUCCESS(
