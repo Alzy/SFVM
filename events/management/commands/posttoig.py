@@ -37,13 +37,16 @@ class Command(BaseCommand):
                         caption = caption + "learn more at sfvm.la\n\n"
                         caption = caption + "#818 #sfv #sfvm #sfvm.la"
 
-                        ig.uploadPhoto(photo_path, caption=caption)
+                        try:
+                            ig.uploadPhoto(photo_path, caption=caption)
+                        except Exception as e:
+                            print('\n\nImage might be too big?\n\n')
+                            pass
                     else:
                         pass
 
         except Exception as e:
-            print('\n\nSomething went wrong. Image might be too big?\n\n')
-            pass
+            raise CommandError('Something went wrong')
 
         self.stdout.write(
             self.style.SUCCESS(
