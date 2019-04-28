@@ -11,6 +11,12 @@
     input[name=name] {
         width: 50%;
     }
+
+    canvas {
+        width: 100%;
+    }
+
+
     textarea[name=short_description] {
         width: 100%;
         height: 5em;

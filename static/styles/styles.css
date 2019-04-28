@@ -143,3 +143,11 @@ footer .logo img {
         bottom: 0px;
     }
 }
+
+
+@media (max-width: 992px) {
+    .article {
+        margin: 0 !important;
+        width: 100% !important;
+    }
+}

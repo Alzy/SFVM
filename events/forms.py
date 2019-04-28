@@ -20,7 +20,7 @@ class EventForm(forms.ModelForm):
         help_text="* City"
     )
     image = forms.ImageField(
-        help_text="Event Flyer (must be square <= 800x800px)",
+        help_text="Event Flyer",
         required=False
     )
     short_description = forms.CharField(
@@ -47,14 +47,14 @@ class EventForm(forms.ModelForm):
             'approved_at',
         )
 
-    def clean_image(self):
-        img = self.cleaned_data.get("image")
-        if not img:
-            pass
-        else:
-            w, h = get_image_dimensions(img)
-            if w != h:
-                raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
-            if w > 800 or h > 800:
-                raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
-        return img
+    # def clean_image(self):
+    #     img = self.cleaned_data.get("image")
+    #     if not img:
+    #         pass
+    #     else:
+    #         w, h = get_image_dimensions(img)
+    #         if w != h:
+    #             raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
+    #         if w > 800 or h > 800:
+    #             raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
+    #     return img

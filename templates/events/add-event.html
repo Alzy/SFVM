@@ -16,6 +16,7 @@
     <!-- cdn scripts -->
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.0.1/color-thief.min.js"></script>
     {% load random_numbers %}
 </head>
 <body class="bg{% random_int 1 13 %}">
@@ -26,7 +27,7 @@
                     <h1>Submit Your Event</h1>
                     <p>Fill out this form to submit an event. All fields with an * asterisk are required.</p>
                     <p></p>
-                    <p><strong>NOTE:</strong> All submissions must be approved before they become live on the site. Make sure everything is correct before hitting submit as there is no way to edit your submission after it has been submitted. NO SPAMMERS.</p>
+                    <p><strong>NOTE:</strong> All submissions must be approved before they become live on the site. Make sure everything is correct before hitting submit as there is no way to edit your submission after it has been submitted.</p>
                     <form id="event_form" method="post" enctype="multipart/form-data" action="/add-event/">
                         {% csrf_token %}
                         {% for hidden in form.hidden_fields %}
@@ -104,6 +105,7 @@
             descriptionField.html(descQuill.root.innerHTML);
         });
     </script>
+    <script src="/static/scripts/add-event.js"></script>
     {% include "modules/footer.html" %}
 </body>
 </html>

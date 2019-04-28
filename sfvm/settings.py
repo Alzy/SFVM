@@ -32,7 +32,7 @@ if str(os.getenv("DEBUG")) == "False":
 else:
     DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'sfvm.la', 'webapp-433772.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sfvm.la', 'webapp-433772.pythonanywhere.com']
 
 
 # Application definition
