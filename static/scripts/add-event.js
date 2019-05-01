@@ -3,6 +3,7 @@ function dataURLToBlob(e){if(-1==e.indexOf(";base64,")){var t=(o=e.split(","))[0
 
 
 // Main
+console.log('wassup foo');
 const igMinImgRatio = 0.8;
 const igMaxImgRatio = 1.91;
 const igOGImgRatio = 1;
@@ -82,16 +83,16 @@ img.onchange = function (e) {
                 canvasCenterY
             );
 
-            // get dominant color to set as BG
-            var colorThief = new ColorThief;
-            var bgColor = colorThief.getColor(image);
+            var bgColor = [51, 51, 51];
             // fill BG
             context.fillStyle = 'rgb(' + bgColor[0] + ', ' + bgColor[1] + ', ' + bgColor[2] + ')';
+            context.imageSmoothingEnabled = false;
             context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            context.globalAlpha = 0.666;
+            context.globalAlpha = 0.8;
             context.fillRect(0, 0, canvas.width, canvas.height);
             context.restore();
             context.globalAlpha = 1;
+            context.imageSmoothingEnabled = true;
 
 
             // draw image at center of canvas
@@ -100,7 +101,8 @@ img.onchange = function (e) {
             // get canvas data
             var dataUrl = canvas.toDataURL('image/jpeg');
             var resizedImage = dataURLToBlob(dataUrl);
-            // console.log(dataUrl, resizedImage);
+            document.querySelector('#id_image_base64_text').value = dataUrl;
+            console.log(dataUrl, resizedImage);
         }
         image.src = readerEvent.target.result;
     }

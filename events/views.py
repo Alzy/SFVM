@@ -33,6 +33,7 @@ def event_details(request, event_slug):
 def add_event(request):
     form = EventForm()
     if request.method == 'POST':
+        print(request.POST, request.FILES)
         form = EventForm(request.POST, request.FILES)
 
         if form.is_valid():

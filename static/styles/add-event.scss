@@ -9,11 +9,13 @@
         display: block;
     }
     input[name=name] {
-        width: 50%;
+        width: 100%;
+        font-size: 2em;
     }
 
     canvas {
-        width: 100%;
+        width: calc(100% + 30px);
+        margin: 0 -15px;
     }
 
 

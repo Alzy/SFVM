@@ -146,7 +146,9 @@ footer .logo img {
 
 
 @media (max-width: 992px) {
-    .article {
+    .article,
+    .top-banner,
+    .upcoming-events {
         margin: 0 !important;
         width: 100% !important;
     }

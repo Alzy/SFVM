@@ -5,9 +5,11 @@
   .article.add-event input, .article.add-event textarea {
     display: block; }
   .article.add-event input[name=name] {
-    width: 50%; }
+    width: 100%;
+    font-size: 2em; }
   .article.add-event canvas {
-    width: 100%; }
+    width: calc(100% + 30px);
+    margin: 0 -15px; }
   .article.add-event textarea[name=short_description] {
     width: 100%;
     height: 5em; }
