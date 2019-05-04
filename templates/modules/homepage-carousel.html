@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-lightbox/0.2.12/slick-lightbox.min.js"></script>
+
+
+<div class="hidden-gallery hidden">
+<ul id="lightbox-gallery">
+    <li>
+        <a class="bg1"
+            href="{% static 'images/bg/bg1.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/valley_haunts/'>@valley_haunts</a></p>"
+        >===</a>
+        <a class="bg2"
+            href="{% static 'images/bg/bg2.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/valley_haunts/'>@valley_haunts</a></p>"
+        >===</a>
+        <a class="bg3"
+            href="{% static 'images/bg/bg3.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/valley_haunts/'>@valley_haunts</a></p>"
+        >===</a>
+        <a class="bg4"
+            href="{% static 'images/bg/bg4.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/valley_haunts/'>@valley_haunts</a></p>"
+        >===</a>
+        <a class="bg5"
+            href="{% static 'images/bg/bg5.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/valley_haunts/'>@valley_haunts</a></p>"
+        >===</a>
+        <a class="bg6"
+            href="{% static 'images/bg/bg6.jpg' %}"
+            data-caption="<p>Artwork by <a href='https://www.instagram.com/tonycereal27/'>@tonycereal27</a></p>"
+        >===</a>
+        <a class="bg7"
+            href="{% static 'images/bg/bg7.jpg' %}"
+            data-caption="<p>Artwork by <a href='https://www.instagram.com/tonycereal27/'>@tonycereal27</a></p>"
+        >===</a>
+        <a class="bg8"
+            href="{% static 'images/bg/bg8.jpg' %}"
+            data-caption="<p>Artwork by <a href='https://www.instagram.com/tonycereal27/'>@tonycereal27</a></p>"
+        >===</a>
+        <a class="bg9"
+            href="{% static 'images/bg/bg9.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/dominick__ortiz/'>@dominick_ortiz</a></p>"
+        >===</a>
+        <a class="bg10"
+            href="{% static 'images/bg/bg10.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/dominick__ortiz/'>@dominick_ortiz</a></p>"
+        >===</a>
+        <a class="bg11"
+            href="{% static 'images/bg/bg11.jpg' %}"
+            data-caption="<p>Photo by <a href='https://www.instagram.com/dominick__ortiz/'>@dominick_ortiz</a></p>"
+        >===</a>
+        <a class="bg12"
+            href="{% static 'images/bg/bg12.jpg' %}"
+            data-caption="<p>Artwork by <a href='https://www.instagram.com/purgatorypond/'>@purgatorypond</a></p>"
+        >===</a>
+        <a class="bg13"
+            href="{% static 'images/bg/bg13.jpg' %}"
+            data-caption="<p>Artwork by <a href=''>s0bQween</a></p>"
+        >===</a>
+    </li>
+</ul>
+</div>
+
+<script type="text/javascript">
+  $('#lightbox-gallery').slickLightbox({
+    caption: 'caption',
+    useHistoryApi: 'true'
+  });
+
+  $('.top-banner').click(function() {
+      $('#lightbox-gallery a.'+document.body.classList[0]).click();
+  });
+</script>
+
+<style type="text/css">
+    .slick-lightbox-slick-item a {
+        color: white;
+        font-size: 1.333em;
+        line-height: 2em;
+    }
+</style>
