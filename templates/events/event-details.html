@@ -61,7 +61,12 @@
                                         </h4>
                                     </td>
                                     <td class="address">
-                                        <strong>Where: </strong><h4>{{event.address}}, {{event.city}}</h4>
+                                        <strong>Where: </strong>
+                                        <h4>
+                                            <a href="https://maps.google.com/?q={{event.address}}, {{event.city}}" target="_blank">
+                                                {{event.address}}, {{event.city}}
+                                            </a>
+                                        </h4>
                                     </td>
                                 </tr>
                             </table>

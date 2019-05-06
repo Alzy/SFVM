@@ -2,9 +2,11 @@ from django.shortcuts import render
 from events.models import Event
 from events.forms import EventForm
 from datetime import date
+from django.views.decorators.cache import never_cache
 
 
 # Create your views here.
+@never_cache
 def index(request):
     # dictionary containing dynamic page content
     event_list = Event.objects.filter(
