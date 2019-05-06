@@ -125,6 +125,9 @@ footer .logo img {
 #about {
     font-size: 2em;
 }
+#about h1 {
+    font-weight: bold;
+}
 
 
 @media (min-width: 768px) {

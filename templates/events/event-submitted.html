@@ -17,10 +17,14 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="cursor: progress;">
         <div class="row">
             <div class="article event-details [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                 <article>
+                    <video class="video-player" loop playsinline  webkit-playsinline autoplay>
+                        <source src="{% static 'videos/8ballfield_mute.mp4' %}" type="video/webm">
+                        Your browser does not support the video tag.
+                    </video>
                     <h1>Thank You</h1>
                     <h2>Your event has been submitted</h2>
                     <h3>Once your event has been appproved, it will be available for all to see.</h3>
@@ -38,9 +42,9 @@
             </div>
         </div>
         <script type="text/javascript">
-            //setTimeout(function () {
-            //    document.location.href="/";
-            //}, 3000);
+            setTimeout(function () {
+                document.location.href="/";
+            }, 5000);
         </script>
     </div>
     <footer>

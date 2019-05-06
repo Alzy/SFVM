@@ -23,7 +23,7 @@
                     <p>Fill out this form to submit an event. All fields with an * asterisk are required.</p>
                     <p></p>
                     <p><strong>NOTE:</strong> All submissions must be approved before they become live on the site. Make sure everything is correct before hitting submit as there is no way to edit your submission after it has been submitted.</p>
-                    <form id="event_form" method="post" enctype="multipart/form-data" action="/add-event/">
+                    <form id="event_form" method="post" enctype="multipart/form-data" action="/submit-event/">
                         {% csrf_token %}
                         {% for hidden in form.hidden_fields %}
                             {{hidden}}
