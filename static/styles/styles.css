@@ -10,8 +10,22 @@ body {
     cursor: pointer;
 }
 
-.upcoming-events-heading {
+#site-navigation {
     margin: 20px 0px;
+}
+#site-navigation a {
+    color: #333333;
+    text-decoration: none;
+    font-size: 2em;
+    margin: 0 1em;
+    opacity: 0.5;
+}
+#site-navigation a:nth-of-type(1) {
+    margin: 0;
+}
+#site-navigation a.active {
+    font-weight: bold;
+    opacity: 1;
 }
 .upcoming-events {
     background-color: rgba(255, 255, 255, 0.95);
@@ -103,6 +117,13 @@ footer .logo img {
 }
 .article article {
     min-height: 100vh;
+}
+
+
+
+/* ABOUT PAGE */
+#about {
+    font-size: 2em;
 }
 
 

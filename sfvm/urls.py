@@ -19,12 +19,22 @@ from django.conf.urls import include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 from events import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'^events/', include('events.urls')),
-    url(r'^add-event/', views.add_event, name='add_event'),
+    url(r'^about/', views.about, name='about'),
+    url(r'^submit-event/', views.submit_event, name='submit_event'),
+    url(
+        r'^add-event/',
+        RedirectView.as_view(
+            url='/submit-event',
+            permanent=True
+        ),
+        name='add_event'
+    ),
     url(
         r'^music-map/',
         TemplateView.as_view(template_name='music-map.html')

@@ -1,22 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{heading}}</title>
+    <title>SFVM - Submit an Event</title>
     {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     {% include "modules/metatags.html" %}
     {% include "modules/analytics.html" %}
-    
-    <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/backgrounds.css' %}">
+
+    {% include "modules/bootstrap.html" %}
+    <!-- page styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles/add-event.css' %}">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- cdn scripts -->
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.0.1/color-thief.min.js"></script>
+    
     {% load random_numbers %}
 </head>
 <body class="bg{% random_int 1 13 %}">
@@ -24,7 +19,7 @@
         <div class="row">
             <div class="article add-event [ col-xs-12 col-sm-offset-2 col-sm-8 ]">
                 <article>
-                    <h1>Submit Your Event</h1>
+                    <h1>Submit An Event</h1>
                     <p>Fill out this form to submit an event. All fields with an * asterisk are required.</p>
                     <p></p>
                     <p><strong>NOTE:</strong> All submissions must be approved before they become live on the site. Make sure everything is correct before hitting submit as there is no way to edit your submission after it has been submitted.</p>
@@ -53,6 +48,7 @@
                 </article>
             </div>
         </div>
+        {% include "modules/footer.html" %}
     </div>
     <!-- DATE TIME PICKER -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" />
@@ -106,6 +102,5 @@
         });
     </script>
     <script src="/static/scripts/add-event.js"></script>
-    {% include "modules/footer.html" %}
 </body>
 </html>

@@ -22,14 +22,10 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     {% include "modules/analytics.html" %}
 
-    <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/backgrounds.css' %}">
+    {% include "modules/bootstrap.html" %}
+    <!-- page styles -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles/event-details.css' %}">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- cdn scripts -->
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
     {% load random_numbers %}
 </head>
 <body class="bg{% random_int 1 13 %}">
@@ -72,7 +68,11 @@
                             </table>
                         </section>
                         <section class="description">
-                            {{event.description|safe}}
+                            {% if event.description %}
+                                {{event.description|safe}}
+                            {% else %}
+                                {{event.short_description}}
+                            {% endif %}
                             {% if event.end_date %}
                                 <p>Event ends {{event.end_date}}</p>
                             {% endif %}

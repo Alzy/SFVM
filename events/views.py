@@ -21,6 +21,10 @@ def index(request):
     return render(request, 'events/index.html', context=context_dict)
 
 
+def about(request):
+    return render(request, 'events/about.html', context={})
+
+
 # Events details page
 def event_details(request, event_slug):
     context_dict = {}
@@ -32,7 +36,7 @@ def event_details(request, event_slug):
     return render(request, 'events/event-details.html', context_dict)
 
 
-def add_event(request):
+def submit_event(request):
     form = EventForm()
     if request.method == 'POST':
         print(request.POST, request.FILES)

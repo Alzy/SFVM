@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upcoming Events</title>
+    <title>SFVM - Local shows in the 818</title>
     {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     {% include "modules/metatags.html" %}
     {% include "modules/analytics.html" %}
 
-    <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/backgrounds.css' %}">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <!-- cdn scripts -->
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    {% include "modules/bootstrap.html" %}
+
     {% load random_numbers %}
 </head>
 <body class="bg{% random_int 1 16 %}">
@@ -23,7 +18,11 @@
             <div class="top-banner [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
             </div>
             <div class="upcoming-events [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
-                <h1 class="upcoming-events-heading">Upcoming Events</h1>
+                <nav id="site-navigation">
+                    <a href="/" class="active">Events</a>
+                    <a href="/about">About</a>
+                    <a href="/submit-event">Submit</a>
+                </nav>
                 <a href="/music-map" class="hidden" id="music-map-icon">
                     <img src="/media/music-map/images/marker-icon.png" style="position: absolute; right: 20px; top: -20px;">
                     <script type="text/javascript">
@@ -65,16 +64,7 @@
                     {% endlocaltime %}
                 </ul>
                 {% include "modules/homepage-carousel.html" %}
-                <footer>
-                    <div class="logo">
-                        <a href="/">
-                            <img src="{% static 'images/818.svg' %}">
-                        </a>
-                    </div>
-                    <div class="submit-an-event">
-                        <a href="/add-event/">Submit an event</a>
-                    </div>                    
-                </footer>
+                {% include "modules/footer.html" %}
             </div>
         </div>
     </div>
