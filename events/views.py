@@ -43,7 +43,6 @@ def submitted_event(request):
 def submit_event(request):
     form = EventForm()
     if request.method == 'POST':
-        print(request.POST, request.FILES)
         form = EventForm(request.POST, request.FILES)
 
         if form.is_valid():
