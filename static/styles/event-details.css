@@ -1,28 +1,26 @@
+article {
+  padding: 0 0 3em 0 !important; }
+
 .article.event-details img.flyer {
   width: -webkit-calc(100% + 30px);
   width: -moz-calc(100% + 30px);
   width: calc(100% + 30px);
   height: auto;
-  margin: 0px -15px;
-}
+  margin: 0px -15px; }
 .article.event-details section.details table {
-  width: 100%;
-}
-.article.event-details section.details table td {
-  padding-right: 5em;
-}
-.article.event-details section.details table td strong, .article.event-details section.details table td h4 {
-  display: inline-block;
-}
-.article.event-details section.details table td strong {
-  margin-right: 0.333em;
-}
+  width: 100%; }
+  .article.event-details section.details table td {
+    padding-right: 5em; }
+    .article.event-details section.details table td strong, .article.event-details section.details table td h4 {
+      display: inline-block; }
+    .article.event-details section.details table td strong {
+      margin-right: 0.333em; }
+  .article.event-details section.details table a {
+    color: unset; }
 .article.event-details section.description {
   min-height: 25vh;
-  margin-top: 1em;
-}
-.article.event-details section.description p, .article.event-details section.description span, .article.event-details section.description a {
-  font-size: 16px;
-}
+  margin-top: 1em; }
+  .article.event-details section.description p, .article.event-details section.description span, .article.event-details section.description a {
+    font-size: 16px; }
 
 /*# sourceMappingURL=event-details.css.map */

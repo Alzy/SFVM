@@ -2,9 +2,11 @@ from django.shortcuts import render
 from events.models import Event
 from events.forms import EventForm
 from datetime import date
+from django.views.decorators.cache import never_cache
 
 
 # Create your views here.
+@never_cache
 def index(request):
     # dictionary containing dynamic page content
     event_list = Event.objects.filter(
@@ -19,6 +21,10 @@ def index(request):
     return render(request, 'events/index.html', context=context_dict)
 
 
+def about(request):
+    return render(request, 'events/about.html', context={})
+
+
 # Events details page
 def event_details(request, event_slug):
     context_dict = {}
@@ -30,9 +36,14 @@ def event_details(request, event_slug):
     return render(request, 'events/event-details.html', context_dict)
 
 
-def add_event(request):
+def submitted_event(request):
+    return render(request, 'events/event-submitted.html')
+
+
+def submit_event(request):
     form = EventForm()
     if request.method == 'POST':
+        print(request.POST, request.FILES)
         form = EventForm(request.POST, request.FILES)
 
         if form.is_valid():
@@ -41,4 +52,4 @@ def add_event(request):
         else:
             print(form.errors)
 
-    return render(request, 'events/add-event.html', {'form': form})
+    return render(request, 'events/submit-event.html', {'form': form})

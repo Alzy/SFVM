@@ -1,6 +1,15 @@
 from django import forms
+from django.core.files.base import ContentFile
 from django.core.files.images import get_image_dimensions
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from events.models import Event
+
+from PIL import Image
+from io import BytesIO
+
+import os
+import re
+import base64
 
 
 class EventForm(forms.ModelForm):
@@ -19,8 +28,13 @@ class EventForm(forms.ModelForm):
         max_length=64,
         help_text="* City"
     )
+    image_base64_text = forms.CharField(
+        widget=forms.HiddenInput(),
+        help_text="Image Base4",
+        required=False
+    )
     image = forms.ImageField(
-        help_text="Event Flyer (must be square <= 800x800px)",
+        help_text="Event Flyer",
         required=False
     )
     short_description = forms.CharField(
@@ -46,15 +60,59 @@ class EventForm(forms.ModelForm):
             'approved',
             'approved_at',
         )
+        # I've defined fields here to ensure 'image_base64_text' appears before 'image'
+        # This also ensures it is cleaned first.
+        fields = (
+            'name',
+            'image_base64_text',
+            'image',
+            'short_description',
+            'description',
+            'address',
+            'city',
+            'start_date',
+            'end_date',
+            'price',
+            'more_details_link'
+        )
 
     def clean_image(self):
         img = self.cleaned_data.get("image")
+        imageData = self.cleaned_data.get("image_base64_text")
         if not img:
-            pass
-        else:
-            w, h = get_image_dimensions(img)
-            if w != h:
-                raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
-            if w > 800 or h > 800:
-                raise forms.ValidationError("The image must be a square and 800x800px or smaller.")
-        return img
+            return img
+        if not imageData:
+            return img
+        
+
+        dataUrlPattern = re.compile('data:image/(png|jpeg);base64,(.*)$')
+        imageData = dataUrlPattern.match(imageData).group(2)
+
+        # If none or len 0, means illegal image data
+        if (imageData == None or len(imageData) == 0):
+            # PRINT ERROR MESSAGE HERE
+            print('corrupt or illegal image data')
+
+        # Decode the 64 bit string into 32 bit
+        imageData = base64.b64decode(imageData)
+        imageData = Image.open(BytesIO(imageData))
+        imageBuffer = BytesIO()
+        imageData.convert('RGB')
+        imageData.save(fp=imageBuffer, format='JPEG')
+        imageContent = ContentFile(imageBuffer.getvalue())
+
+        return InMemoryUploadedFile(
+            # file(ContentFile)
+            imageContent,
+            # field_name(idk)
+            None,
+            # name
+            img.name,
+            # content_type
+            'image/jpeg',
+            # size
+            imageContent.tell,
+            # charset(idk)
+            None
+        )
+
