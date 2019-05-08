@@ -11,15 +11,20 @@
     {% include "modules/bootstrap.html" %}
 
     {% load random_numbers %}
+
+    {% random_int 1 30 as showAngel %}
+    {% if showAngel == 30 %}
+        {% include "modules/easter-eggs/angel.html" %}
+    {% endif %}
 </head>
 <body class="bg{% random_int 1 16 %}">
     <div class="container">
         <div class="row">
             <div class="top-banner [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
             </div>
-            <div class="upcoming-events [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
+            <article class="upcoming-events [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">
                 <nav id="site-navigation">
-                    <a href="/" class="active">Events</a>
+                    <a href="/" class="active">Upcoming Events</a>
                     <a href="/about">About</a>
                     <a href="/submit-event">Submit</a>
                 </nav>
@@ -65,7 +70,7 @@
                 </ul>
                 {% include "modules/homepage-carousel.html" %}
                 {% include "modules/footer.html" %}
-            </div>
+            </article>
         </div>
     </div>
 

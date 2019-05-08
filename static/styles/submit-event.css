@@ -1,0 +1,51 @@
+article {
+  padding: 0 0 3em 0 !important; }
+
+.article.add-event section {
+  margin: 3em 0;
+  position: relative; }
+.article.add-event input, .article.add-event textarea {
+  display: block; }
+.article.add-event input[name=name] {
+  width: 100%;
+  font-size: 2em; }
+.article.add-event input[name=image] {
+  width: calc(100% + 30px);
+  height: 93.75%;
+  margin: 0 -15px;
+  position: absolute;
+  opacity: 0;
+  z-index: 999;
+  cursor: pointer; }
+.article.add-event canvas {
+  width: calc(100% + 30px);
+  margin: 0 -15px;
+  background: url("/static/images/draganddrop.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.75; }
+  .article.add-event canvas.set {
+    opacity: 1;
+    background: unset; }
+.article.add-event textarea[name=short_description] {
+  width: 100%;
+  height: 5em; }
+.article.add-event .ql-toolbar {
+  margin: 0px -15px; }
+.article.add-event div.event-description {
+  margin: 0px -15px; }
+  .article.add-event div.event-description .ql-editor {
+    background-color: white;
+    min-height: 10em; }
+.article.add-event input[name=address] {
+  width: 50%; }
+.article.add-event input[name=start_date],
+.article.add-event input[name=end_date] {
+  display: block !important;
+  width: 0px;
+  height: 0px;
+  opacity: 0; }
+.article.add-event input[name=more_details_link] {
+  width: 75%; }
+
+/*# sourceMappingURL=submit-event.css.map */

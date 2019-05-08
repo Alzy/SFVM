@@ -36,6 +36,10 @@ def event_details(request, event_slug):
     return render(request, 'events/event-details.html', context_dict)
 
 
+def submitted_event(request):
+    return render(request, 'events/event-submitted.html')
+
+
 def submit_event(request):
     form = EventForm()
     if request.method == 'POST':
@@ -48,4 +52,4 @@ def submit_event(request):
         else:
             print(form.errors)
 
-    return render(request, 'events/add-event.html', {'form': form})
+    return render(request, 'events/submit-event.html', {'form': form})

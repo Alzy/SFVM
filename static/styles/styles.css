@@ -1,8 +1,23 @@
 @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
 @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 
+
+
+.full-width {
+    width: calc(100% + 30px);
+    margin: 0 -15px;
+}
+
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-size: contain;
+}
+
+article {
+    padding: 0 2em !important;
 }
 
 .top-banner {
@@ -40,6 +55,9 @@ body {
     border-top: 1px #C8C8C8 solid;
     padding: 1em 0px;
     margin: 0px;
+}
+.event-list > li:nth-of-type(1) {
+    border-top: none;
 }
 .event-list > li > time {
     display: inline-block;
@@ -124,6 +142,7 @@ footer .logo img {
 /* ABOUT PAGE */
 #about {
     font-size: 2em;
+    margin-top: 1.5em;
 }
 #about h1 {
     font-weight: bold;

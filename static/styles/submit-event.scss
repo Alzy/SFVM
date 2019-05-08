@@ -1,8 +1,11 @@
+article {
+    padding: 0 0 3em 0 !important;
+}
 .article.add-event {
-    padding-bottom: 3em;
 
     section {
         margin: 3em 0;
+        position: relative;
     }
 
     input, textarea {
@@ -13,9 +16,28 @@
         font-size: 2em;
     }
 
+    input[name=image] {
+        width: calc(100% + 30px);
+        height: 93.75%;
+        margin: 0 -15px;
+        position: absolute;
+        opacity: 0;
+        z-index: 999;
+        cursor: pointer;
+    }
+
     canvas {
         width: calc(100% + 30px);
         margin: 0 -15px;
+        background: url('/static/images/draganddrop.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.75;
+
+        &.set {
+            opacity: 1;
+            background: unset;
+        }
     }
 
 

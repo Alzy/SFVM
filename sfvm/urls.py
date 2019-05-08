@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^events/', include('events.urls')),
     url(r'^about/', views.about, name='about'),
     url(r'^submit-event/', views.submit_event, name='submit_event'),
+    # url(r'^submitted-event/', views.submitted_event, name='submitted_event'),
     url(
         r'^add-event/',
         RedirectView.as_view(

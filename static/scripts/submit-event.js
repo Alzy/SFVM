@@ -3,7 +3,6 @@ function dataURLToBlob(e){if(-1==e.indexOf(";base64,")){var t=(o=e.split(","))[0
 
 
 // Main
-console.log('wassup foo');
 const igMinImgRatio = 0.8;
 const igMaxImgRatio = 1.91;
 const igOGImgRatio = 1;
@@ -11,12 +10,14 @@ const igOGImgRatio = 1;
 var img = document.getElementById('id_image');
 var resizedImgCanvas = document.createElement('canvas');
 
+img.setAttribute('title', 'Click or drag a file here to pick an image');
+
 // append canvas
 img.parentNode.insertBefore(resizedImgCanvas, img.nextSibling);
 
 // handle onchange/input
 img.onchange = function (e) {
-    console.log('image added');
+    // image added
     var file = e.target.files[0];
 
     // Load the image
@@ -34,9 +35,6 @@ img.onchange = function (e) {
             var height = image.height;
             var ratio = width/height;
 
-            console.log(width, height, ratio);
-
-
             // check min/max image dimensions & adjust
             if (width > maxImgWidth) {
                 width = maxImgWidth;
@@ -48,11 +46,11 @@ img.onchange = function (e) {
             // check ratio & adjust
             var canvasRatioToUse;  // we will fit the image within this.
             if (ratio >= igMinImgRatio && ratio <= igMaxImgRatio) {
-                console.log('we should not resize');
+                // console.log('image should not resize');
                 maxImgWidth = width;
                 canvasRatioToUse = ratio;
             } else {
-                console.log('we should resize');
+                // console.log('image should resize');
                 var isTooWide = (ratio > igMaxImgRatio);
                 if (isTooWide) {
                     canvasRatioToUse = igMaxImgRatio;
@@ -64,9 +62,6 @@ img.onchange = function (e) {
             canvas.width = width;
             canvas.height = width * (1/canvasRatioToUse);
             var context = canvas.getContext('2d');
-            console.log('before');
-            console.log('img', width, height, ratio);
-            console.log('cnv', canvas.width, canvas.height, canvasRatioToUse);
             // make sure image will fit within canvas or adjust.
             if (height > canvas.height) {
                 width = width * (canvas.height / height);
@@ -74,14 +69,6 @@ img.onchange = function (e) {
             }
             var canvasCenterX = Math.abs((canvas.width - width)/2);
             var canvasCenterY = Math.abs((canvas.height - height)/2);
-
-            console.log('after');
-            console.log('img', width, height, ratio);
-            console.log('cnv', canvas.width, canvas.height, canvasRatioToUse);
-            console.log(
-                canvasCenterX,
-                canvasCenterY
-            );
 
             var bgColor = [51, 51, 51];
             // fill BG
@@ -102,7 +89,7 @@ img.onchange = function (e) {
             var dataUrl = canvas.toDataURL('image/jpeg');
             var resizedImage = dataURLToBlob(dataUrl);
             document.querySelector('#id_image_base64_text').value = dataUrl;
-            console.log(dataUrl, resizedImage);
+            resizedImgCanvas.classList.add('set');
         }
         image.src = readerEvent.target.result;
     }

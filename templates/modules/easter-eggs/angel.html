@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<div class="floating-angel no-animation">
+    <span class="angel-emoji"><span class="clickable">👼</span></span>
+    <audio class="floating-angel-audio hidden" paused>
+        <source src="{% static 'sounds/sfvm-breathy.mp3' %}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+<style type="text/css">
+.floating-angel {
+  position:fixed;
+  width:200px;
+  height:200px;
+  top:30%;
+  left:50%;
+  margin:-100px 0 0 -120px;
+  animation:bigBoxAnimation 6s linear infinite;
+  z-index: 1;
+}
+.floating-angel.no-animation,
+.floating-angel.no-animation .angel-emoji
+{
+  animation: unset !important;
+  pointer-events: none;
+}
+.angel-emoji {
+  position:absolute;
+  top:60%;
+  left:50%;
+  width:500%;
+  height:10000%;
+  margin:-20px 0 0 -20px;
+  animation:boxAnimation 20s cubic-bezier(0.02, 0.01, 0.31, 1) infinite;
+}
+.angel-emoji .clickable{
+  font-size: 3em;
+  cursor: help;
+}
+#box2 {
+  animation:boxAnimation 6s cubic-bezier(0.02, 0.01, 0.31, 1) infinite;
+  transform:matrix(-1,0,0,1,0,0);
+}
+
+@keyframes boxAnimation {
+  100% {transform:rotate(360deg);}
+}
+@keyframes angelAnimation{
+  50% {transform:translateY(-150px);}
+}
+
+</style>
+
+
+<script type="text/javascript">
+  var angelBox = document.querySelector('.floating-angel');
+  setTimeout(function () {
+    angelBox.classList.remove('no-animation');
+  }, 1000);
+  var angel = document.querySelector('.angel-emoji .clickable');
+  var audio = document.querySelector('.floating-angel audio');
+  angel.addEventListener('click', function(event) {
+    event.preventDefault();
+    angelBox.classList.add('no-animation');
+    audio.play();
+    setTimeout(function () {
+      angelBox.remove();
+    }, 9000);
+  });
+</script>
