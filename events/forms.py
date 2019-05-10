@@ -46,10 +46,11 @@ class EventForm(forms.ModelForm):
     )
     description = forms.CharField(
         widget=forms.Textarea,
-        help_text="* Long Description"
+        help_text="Long Description",
+        required=False
     )
     start_date = forms.DateTimeField(help_text="* Start Date/Time")
-    end_date = forms.DateTimeField(help_text="End Date/Time")
+    end_date = forms.DateTimeField(help_text="* End Date/Time")
     price = forms.DecimalField(help_text="* Price ($0.00 if free)", decimal_places=2, initial="0.00")
     more_details_link = forms.URLField(help_text="Event Link", required=False)
 
