@@ -5,7 +5,8 @@ article {
   margin: 3em 0;
   position: relative; }
 .article.add-event input, .article.add-event textarea {
-  display: block; }
+  display: block;
+  padding: 10px; }
 .article.add-event input[name=name] {
   width: 100%;
   font-size: 2em; }
@@ -47,5 +48,8 @@ article {
   opacity: 0; }
 .article.add-event input[name=more_details_link] {
   width: 75%; }
+.article.add-event input[name=Submit] {
+  padding: 10px 20px;
+  font-weight: bold; }
 
 /*# sourceMappingURL=submit-event.css.map */

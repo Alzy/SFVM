@@ -13,7 +13,7 @@ class Event(models.Model):
 
     image = models.ImageField(upload_to="flyers", blank=True)
     short_description = models.TextField(max_length=256, blank=True)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     address = models.CharField(max_length=64, blank=True)
     city = models.CharField(max_length=64, blank=True)
     start_date = models.DateTimeField()

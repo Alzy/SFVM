@@ -5,12 +5,22 @@
     {% load staticfiles %}
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
-    {% include "modules/metatags.html" %}
+
+    <!-- for facebook and ig -->
+    <meta property="og:title" content="SFVM - Submit an Event" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}" />
+    <meta property="og:description" content="Help support the scene! Fill out this form to submit an event." />
+    <meta property="og:image" content="{% block og_image %}{{ request.scheme }}://{{ request.get_host }}{% static 'images/818.jpg' %}{% endblock %}" />
+
+    <!-- for general SEO -->
+    <meta name="Description" content="Help support the scene! Fill out this form to submit an event.">
+    <meta name="Keywords" content="sfvm san fernando valley shows events upcoming local submit">
     {% include "modules/analytics.html" %}
 
     {% include "modules/bootstrap.html" %}
     <!-- page styles -->
-    <link rel="stylesheet" type="text/css" href="{% static 'styles/submit-event.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/submit-event.css' %}?updated=050919">
     
     {% load random_numbers %}
 </head>
@@ -93,7 +103,7 @@
                     ]                
                 },
                 theme: 'snow',
-                placeholder: 'Event details...'
+                placeholder: 'Event details... (optional)'
             },
         );
 
