@@ -72,7 +72,7 @@
         >===</a>
         <a class="bg16"
             href="{% static 'images/bg/bg16.jpg' %}?updated=050519"
-            data-caption="<p>Artwork by <a href=''>@bagofgems</a></p>"
+            data-caption="<p>Artwork by <a href='https://www.instagram.com/bagofgems/''>@bagofgems</a></p>"
         >===</a>
     </li>
 </ul>
@@ -86,15 +86,20 @@
 
   $('.top-banner').click(function() {
       $('#lightbox-gallery a.'+document.body.classList[0]).click();
+      setTimeout(function () {
+        // PATCH
+        // force links in captions to pass through
+        slickCaptionLinks = document.querySelectorAll('.slick-lightbox-slick-caption a');
+        for(var i=0; i < slickCaptionLinks.length; i++){
+            slickCaptionLinks[i].onclick = function (e) { 
+                e.preventDefault();
+                window.location = this.href;
+            }
+        }
+      }, 250);
   });
 </script>
 <script type="text/javascript">
-    // PATCH
-    // force links in captions to pass through
-    slickCaptionLinks = document.querySelectorAll('.slick-lightbox-slick-caption');
-    for(var i=0; i < slickCaptionLinks.length; i++){
-        slickCaptionLinks[i].onclick = function () { window.location = slickCaptionLinks[i].getAttribute('href'); }
-    }
 </script>
 
 
