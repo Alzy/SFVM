@@ -20,14 +20,15 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
-from events import views
+from events import views as eventsViews
+from artists import views as artistsViews
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', eventsViews.index, name='index'),
     url(r'^events/', include('events.urls')),
-    url(r'^about/', views.about, name='about'),
-    url(r'^submit-event/', views.submit_event, name='submit_event'),
-    # url(r'^submitted-event/', views.submitted_event, name='submitted_event'),
+    url(r'^about/', eventsViews.about, name='about'),
+    url(r'^submit-event/', eventsViews.submit_event, name='submit_event'),
+    # url(r'^submitted-event/', eventsViews.submitted_event, name='submitted_event'),
     url(
         r'^add-event/',
         RedirectView.as_view(
@@ -40,5 +41,6 @@ urlpatterns = [
         r'^music-map/',
         TemplateView.as_view(template_name='music-map.html')
     ),
+    url(r'^artists/map', artistsViews.map, name='artists-map'),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
