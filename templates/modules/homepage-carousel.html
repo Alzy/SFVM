@@ -88,6 +88,15 @@
       $('#lightbox-gallery a.'+document.body.classList[0]).click();
   });
 </script>
+<script type="text/javascript">
+    // PATCH
+    // force links in captions to pass through
+    slickCaptionLinks = document.querySelectorAll('.slick-lightbox-slick-caption');
+    for(var i=0; i < slickCaptionLinks.length; i++){
+        slickCaptionLinks[i].onclick = function () { window.location = slickCaptionLinks[i].getAttribute('href'); }
+    }
+</script>
+
 
 <style type="text/css">
     .slick-lightbox-slick-item a {
