@@ -7,11 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
 
+    <!-- CDN -->
 	<link rel="stylesheet" href="/static/styles/music-map.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
-	<script src="/static/scripts/music-map/tracks.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    
 
+    <script src="/static/scripts/artists/map-audio.js"></script>
+
+    <script src="/static/scripts/utils/playem-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/soundmanager2/2.97a.20150601/script/soundmanager2-jsmin.js"></script>
+
+
+
+    <!-- STYLES -->
     <link rel="stylesheet" type="text/css" href="{% static 'styles/artists/map.css' %}?updated=050519">
 </head>
 <body>
@@ -20,37 +29,62 @@
         <div class="content">
             <ol id="artists-list">
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>Alzy</h3>
                         <h4>Reseda</h4>
                     </div>
+                    <div class="details">
+                        <div class="basic-info">
+                            <div class="image">
+                                <img src="{% static 'images/test-flyer.jpg' %}">
+                            </div>
+                            <div class="summary">           
+                                <div class="name">Alzy</div>
+                                <div class="neighborhood">Reseda</div>
+                                <div class="years-active">
+                                    <span>1993</span>-<span>present</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="biography"><p>
+                            Metallica is an American heavy metal band. The band was formed in 1981 in Los Angeles, California by drummer Lars Ulrich and vocalist/guitarist James Hetfield, and has been based in San Francisco, California for most of its career. The group's fast tempos, instrumentals and aggressive musicianship made them one of the founding "big four" bands of thrash metal, alongside Megadeth, Anthrax and Slayer. Metallica's current lineup comprises founding members Hetfield and Ulrich, longtime lead guitarist Kirk Hammett and bassist Robert Trujillo.
+                        </p></div>
+                        <div class="listen">
+                            <h4>LISTEN</h4>
+                            <ul>
+                                <li data-url="https://soundcloud.com/alzymusic/02-1997-honda-accord-ex">The Chronicles of Narnia</li>
+                                <li data-url="https://soundcloud.com/alzymusic/02-1997-honda-accord-ex">The Lion</li>
+                                <li data-url="https://soundcloud.com/alzymusic/02-1997-honda-accord-ex">The Witch</li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>Dawntin Loo</h3>
                         <h4>Winnetka</h4>                    
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>SFV Acid</h3>
                         <h4>Reseda</h4>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>Visibly Hispanic Bois</h3>
                         <h4>Northridge</h4>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>Satanic Panic</h3>
                         <h4>Reseda</h4>
                     </div>
                 </li>
                 <li>
-                    <div>
+                    <div class="summary">
                         <h3>Super Bad Blvd Burgers</h3>
                         <h4>Woodland Hills</h4>
                     </div>
@@ -70,6 +104,7 @@
 </body>
 <script src="/static/scripts/artists/map-sfv-features.js"></script>
 <script src="/static/scripts/artists/map-sidebar.js"></script>
+<script src="/static/scripts/artists/map-audio.js"></script>
 <script type="text/javascript">
     /* Map */
     var map = new L.Map('sfvm-history-map', {

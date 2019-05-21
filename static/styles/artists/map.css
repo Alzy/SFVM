@@ -17,6 +17,8 @@ body {
       padding-right: 1.666em; }
       body .sidebar .content #artists-list li {
         cursor: pointer; }
+        body .sidebar .content #artists-list li .details {
+          display: none; }
       body .sidebar .content #artists-list li.selected {
         color: red; }
   body #active-artist-overlay {
@@ -32,7 +34,25 @@ body {
       width: 100%;
       height: 100%;
       overflow-x: hidden;
-      overflow-y: auto; }
+      overflow-y: auto;
+      font-size: 1.5em;
+      padding: 3em 6em; }
+    body #active-artist-overlay .details .basic-info .image {
+      display: inline-block;
+      width: 300px;
+      height: 300px; }
+      body #active-artist-overlay .details .basic-info .image img {
+        width: 100%;
+        height: 100%; }
+    body #active-artist-overlay .details .basic-info .summary {
+      display: inline-block; }
+      body #active-artist-overlay .details .basic-info .summary .name {
+        font-size: 3em; }
+    body #active-artist-overlay .details .biography {
+      margin: 1.5em 0;
+      max-width: 900px; }
+    body #active-artist-overlay .details .listen h4 {
+      font-size: 1.5em; }
   body #sfvm-history-map {
     z-index: 0; }
 
