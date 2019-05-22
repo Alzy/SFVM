@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <footer>
     <div class="logo">
-        <a href="javascript:history.back()">
+        <a href="{% if isMobileView %}/{% else %}javascript:history.back(){% endif %}">
             <img src="{% static 'images/818.svg' %}">
         </a>
     </div>
