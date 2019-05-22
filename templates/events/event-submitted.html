@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles/event-submitted.css' %}">
 </head>
-<body>
+<body class="{% if isMobileView %}mobile-app-view{% endif %}">
     <div id="event-submitted-text">
         <h1>Thank You!</h1>
         <h2>Your event has been submitted.</h2>

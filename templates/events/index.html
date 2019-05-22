@@ -17,7 +17,7 @@
         {% include "modules/easter-eggs/angel.html" %}
     {% endif %}
 </head>
-<body class="bg{% random_int 1 16 %}">
+<body class="bg{% random_int 1 16 %} {% if isMobileView %}mobile-app-view{% endif %}">
     <div class="container">
         <div class="row">
             <div class="top-banner [ col-xs-12 col-sm-offset-1 col-sm-10 col-sm-offset-1 ]">

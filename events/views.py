@@ -15,6 +15,7 @@ def index(request):
     ).order_by('start_date')[:14]
 
     context_dict = {
+        'isMobileView': (request.GET.get('mobile-app-view', 'false')),
         'heading': 'Upcoming Events',
         'events': event_list
     }
@@ -22,22 +23,30 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'events/about.html', context={})
+    context_dict = {
+        'isMobileView': (request.GET.get('mobile-app-view', 'false')),
+    }
+    return render(request, 'events/about.html', context=context_dict)
 
 
 # Events details page
 def event_details(request, event_slug):
-    context_dict = {}
+    context_dict = {
+        'isMobileView': (request.GET.get('mobile-app-view', 'false')),
+    }
     try:
         event = Event.objects.get(slug=event_slug)
         context_dict['event'] = event
     except Event.DoesNotExist:
         context_dict['event'] = None
-    return render(request, 'events/event-details.html', context_dict)
+    return render(request, 'events/event-details.html', context=context_dict)
 
 
 def submitted_event(request):
-    return render(request, 'events/event-submitted.html')
+    context_dict = {
+        'isMobileView': (request.GET.get('mobile-app-view', 'false')),
+    }
+    return render(request, 'events/event-submitted.html', context=context_dict)
 
 
 def submit_event(request):
@@ -51,4 +60,8 @@ def submit_event(request):
         else:
             print(form.errors)
 
-    return render(request, 'events/submit-event.html', {'form': form})
+    context_dict = {
+        'isMobileView': (request.GET.get('mobile-app-view', 'false')),
+        'form': form
+    }
+    return render(request, 'events/submit-event.html', context=context_dict)
