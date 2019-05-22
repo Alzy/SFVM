@@ -1,0 +1,10 @@
+.mobile-app-view #site-navigation a:not(.active) {
+  display: none; }
+.mobile-app-view #music-map-icon {
+  display: none; }
+.mobile-app-view footer {
+  padding: 8em 0 5em 0; }
+  .mobile-app-view footer .submit-an-event {
+    display: none; }
+
+/*# sourceMappingURL=mobile-app-view.css.map */

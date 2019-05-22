@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEQ,gDAAe;EACX,OAAO,EAAE,IAAI;AAIrB,gCAAgB;EACZ,OAAO,EAAE,IAAI;AAGjB,uBAAO;EACH,OAAO,EAAE,WAAW;EAEpB,wCAAiB;IACb,OAAO,EAAE,IAAI",
+"sources": ["mobile-app-view.scss"],
+"names": [],
+"file": "mobile-app-view.css"
+}

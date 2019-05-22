@@ -1,0 +1,19 @@
+.mobile-app-view {
+    #site-navigation {
+        a:not(.active) {
+            display: none;
+        }
+    }
+
+    #music-map-icon {
+        display: none;
+    }
+
+    footer {
+        padding: 8em 0 5em 0;
+
+        .submit-an-event {
+            display: none;
+        }        
+    }
+}
