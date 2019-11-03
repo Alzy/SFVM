@@ -84,7 +84,6 @@ class EventForm(forms.ModelForm):
             return img
         if not imageData:
             return img
-        
 
         dataUrlPattern = re.compile('data:image/(png|jpeg);base64,(.*)$')
         imageData = dataUrlPattern.match(imageData).group(2)
@@ -116,4 +115,3 @@ class EventForm(forms.ModelForm):
             # charset(idk)
             None
         )
-
