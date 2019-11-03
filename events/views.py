@@ -4,6 +4,15 @@ from events.forms import EventForm
 from datetime import date
 from django.views.decorators.cache import never_cache
 
+from events.models import Event
+from events.serializers import EventSerializer
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import mixins
+from rest_framework import generics
+from rest_framework import status
+
 
 # Create your views here.
 @never_cache
@@ -65,3 +74,40 @@ def submit_event(request):
         'form': form
     }
     return render(request, 'events/submit-event.html', context=context_dict)
+
+
+class EventList(
+    mixins.ListModelMixin,
+    mixins.CreateModelMixin,
+    generics.GenericAPIView
+):
+    """
+    List all events, or create a new event.
+    """
+
+    def get(self, request, format=None):
+        events = Event.objects.all()
+
+        past = self.request.query_params.get('past', None)
+        if past is not None:
+            events = events.filter(
+                approved=True,
+                end_date__lte=date.today()
+            ).order_by('-start_date')
+        else:
+            print('h')
+            # Return default view. (next 14 events)
+            events = events.filter(
+                # approved=True,
+                end_date__gte=date.today()
+            ).order_by('start_date')[:14]
+
+        serializer = EventSerializer(events, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = EventSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
